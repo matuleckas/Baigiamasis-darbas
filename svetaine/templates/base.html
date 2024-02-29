@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Svetainė
+      {% endblock %}
+    </title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  rel="stylesheet" /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<!-- Bootstrap CSS -->
+    <link rel='stylesheet' id='dina-bootstrap-css-css'  href='https://matchthemes.com/demohtml/dina/css/bootstrap/css/bootstrap.min.css' type='text/css' media='all' />
+    <!-- Font Awesome Icons CSS -->
+    <link rel='stylesheet' id='dina-font-awesome-css'  href='https://matchthemes.com/demohtml/dina/css/fontawesome/css/font-awesome.min.css' type='text/css' media='all' />
+    <!-- Main CSS File -->
+    <link rel='stylesheet' id='dina-style-css-css'  href='https://matchthemes.com/demohtml/dina/style.css' type='text/css' media='all' />
+    <style>
+      main {
+        width: 100%;
+      }
+      .image-title {
+        background-image: url(https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 150px;
+        padding-bottom: 150px;
+        background-position: center center;
+        background-size: cover;
+        position: relative;
+      }
+      .image-title::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Adjust the color and opacity as needed */
+        /* Other styles for overlay */
+      }
+      .image-title h1 {
+        z-index: 2;
+        position: relative;
+        color: white;
+        font-size: 4em;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      .navbar-brand {
+        font-weight: 900;
+      }
+
+      .image-title h1 {
+          overflow: hidden;
+          position: relative;
+          animation: revealText 0.8s ease forwards;
+          opacity: 0;
+          transform: translateY(100px);
+      }
+
+      @keyframes revealText {
+          0% {
+              opacity: 0;
+              transform: translateY(100px);
+          }
+          100% {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Svetainė
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Pagrindinis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">Apie mus</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Kontaktai</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <div class="image-title" class="mb-5">
+        <h1>{{ request.resolver_match.view_name }}</h1>
+      </div>
+      <div class="container mt-5">{% block content %} {% endblock %}</div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
+  </body>
+</html>
